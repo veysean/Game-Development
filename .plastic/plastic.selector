@@ -1,0 +1,4 @@
+repository "Space shooting 2025-11-15_00-20-13/Space shooting@18968337547711@cloud"
+  path "/"
+    br "/main"
+    co "/main"

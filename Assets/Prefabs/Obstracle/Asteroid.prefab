@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd8db94d731c07408381b4d54550d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyEffect: {fileID: 0}
+  destroyEffect: {fileID: 8200878467491758282, guid: 686346ed631e0294281dedb461d387fe, type: 3}
+  lives: 5
   sprites:
   - {fileID: 195731935, guid: fd0c3e6ae94771a468ba6655dec1745e, type: 3}
   - {fileID: -2062701407, guid: fd0c3e6ae94771a468ba6655dec1745e, type: 3}

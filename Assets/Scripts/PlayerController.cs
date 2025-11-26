@@ -65,6 +65,10 @@ public class PlayerController : MonoBehaviour
             {
                 ExitBoost();
             }
+            if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetButtonDown("Fire1"))
+            {
+                PhaserWeapon.Instance.Shoot();
+            }
         }
     }
 
@@ -98,7 +102,6 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.SetWorldSpeed(7f);
             boost = boostPower;
             boosting = true;
-            //engineEffect.Play();
         }
     }
 
@@ -114,8 +117,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            //Asteroid asteroid = collision.gameObject.GetComponent<Asteroid>();
-            //if (asteroid) asteroid.TakeDamage(1);
             TakeDamage(1);  
         }
     }

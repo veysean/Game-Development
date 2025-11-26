@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Whale : MonoBehaviour
 {
+    [SerializeField] private GameObject destroyEffect;
+
+    [SerializeField] private int lives;
+    private int damage;
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Player"))
@@ -22,5 +26,28 @@ public class Whale : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Bullet"))
+        {
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player) player.TakeDamage(damage);
+            lives -= 1;
+            if (lives <= 0)
+            {
+                Instantiate(destroyEffect, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+        }
+    }
 
+    public void TakeDamage(int damage)
+    {
+        lives -= damage;
+        if (lives <= 0)
+        {
+            Instantiate(destroyEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+    }
 }

@@ -9,7 +9,7 @@ public class Asteroid : MonoBehaviour
 
     [SerializeField] private GameObject destroyEffect;
 
-    private int lives;
+    [SerializeField] private int lives;
     private int damage;
 
     [SerializeField] private Sprite[] sprites;
@@ -42,10 +42,16 @@ public class Asteroid : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Bullet"))
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             if (player) player.TakeDamage(damage);
+            lives -= 1;
+            if(lives <= 0)
+            {
+                Instantiate(destroyEffect, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
         }
     }
 
